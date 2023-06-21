@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+	<meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+	<title>{% block title %}首页 - 慕学在线网{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% block custom_css %}
+    {% endblock %}
+    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}" type="text/javascript"></script>
+    {% block style %}
+    {% endblock %}
+    <style>
+       html, body {
+            background:#efefee;
+            height:900px;
+      }
+
+      .headerwrap {
+        margin-bottom:60px;
+        background: #fff;
+        box-shadow: 0px 5px 3px rgba(100, 100, 100, .5);
+      }
+
+      .logo {
+        margin-left:20px;
+        margin-top:12px;
+        height:60px;
+      }
+      
+      .headerwrap{
+        height:90px;
+      }
+
+      .middle {
+          width: 100%;
+      }
+
+      .middle .title{
+          display: inline-block;
+          width:400px;
+          margin-left: 60px;
+          margin-right: 230px;
+          padding-top: 24px;
+      }
+
+      .middle .title .ch{
+        font-size:18px;
+        font-weight: bold;
+        color:#0538a7;
+        margin-bottom:5px;
+      }
+
+      .middle .title .en{
+        font-size:14px;
+        font-weight: bold;
+        color:#0538a7;
+      }
+
+      .middle .searchbox{
+        border:4px solid #e0ebfd;
+        margin-top:27px;
+        width:400px;
+        margin-right:70px;
+    
+      }
+
+      .middle .search_btn{
+        height :37px;
+      }
+
+      .searchbox input{
+        width : 300px;
+      }
+
+      .nav {
+         position: relative;
+      }
+
+      .nav-img {
+          width:30px;
+          margin-top: 46px;
+          margin-right: 55px;
+      }
+      
+      .home {
+        width:36px;
+      }
+      
+      #nav-decorete-home,#nav-decorete-personal,#nav-decorete-mail {
+           display: inline-block;
+           position: absolute;
+      }
+
+      .left-all {
+        float: left;
+        padding-left: 90px;
+        
+      }
+      
+      .left {
+        
+        position: relative;
+        background: #e4ecf3;
+        width:310px;
+        height:380px;
+        padding-top: 1px;
+        margin-top: 25px;
+        margin-left: 30px;
+        margin-right: 30px;
+        border-radius: 0 27px 27px 27px;
+      }
+      
+      #courses-img {
+        margin-left: 30px;
+        width: 310px;
+        height: 160px;
+      }
+
+
+      .guide-link {
+        position: relative;
+      }
+
+      .left li {
+        margin-top: 20px;
+        height:30px;
+        line-height:2em;
+        list-style-type:disc;
+        list-style-position:inside;
+        font-size: 15px;
+        font-weight: bold;
+        color:#656565;
+      }
+
+      .left li:hover {
+        background-color: #fff;
+        color:#2a4d97 ;
+      }
+      
+    </style>
+</head>
+<body>
+<section class="headerwrap">
+    <header>
+        <div class="middle">
+            <img class="fl logo" src="{% static 'images/logo.jpg' %}"/>
+            <div class="title"><h2 class = "ch">中国电建集团昆明勘测设计研究院有限公司</h2><h2 class = "en">KUNMING ENGINGEERING CORPORATION LIMITED</h2>  </div>
+            <div class = "nav fr">
+              <a href="{% url 'index' %}"><img src="{% static 'images/home.png'%}" class="nav-img home"/></a><div id= "nav-decorete-home"></div>
+              <a ><img src="{% static 'images/personal.png'%}" class="nav-img"/></a><div id= "nav-decorete-personal"></div>
+              <a><img src="{% static 'images/mail.png'%}" class="nav-img"/></a><div id= "nav-decorete-mail"></div>
+            </div>
+            <div class="searchbox fr">
+              <input id="search_keywords" class="fl" type="text" value="{{ keywords }}" placeholder="请 输 入 关 键 词 查 找"/>
+              <img class="search_btn fr" id="jsSearchBtn" src="{% static 'images/search_btn.png' %}"/>
+          </div>
+          </div>
+    </header>
+</section>
+<div class = "left-all">
+    <img id = "courses-img" src="../../../media/{{courses_detail.image}}"/>
+    <div class="left">
+      {% block nav %}
+      {% endblock %}
+    </div>
+</div>
+
+<!--crumbs start-->
+{% block custom_bread %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+
+
+<script src="{% static 'js/selectUi.js' %}" type='text/javascript'></script>
+<script src="{% static 'js/deco-common.js' %}" type='text/javascript'></script>
+<script type="text/javascript" src="{% static 'js/plugins/laydate/laydate.js' %}"></script>
+<script src="{% static 'js/plugins/layer/layer.js' %}"></script>
+<script src="{% static 'js/plugins/queryCity/js/public.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/unslider.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/plugins/jquery.scrollLoading.js' %}"  type="text/javascript"></script>
+{% block custom_js %}
+{% endblock %}
+
+
+</body>
+</html>

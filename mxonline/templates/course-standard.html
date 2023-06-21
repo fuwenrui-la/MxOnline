@@ -1,0 +1,294 @@
+{% extends 'course-base.html' %}
+{% load staticfiles %}
+{% block title %}课程信息{% endblock %}
+{% block style %}
+
+{% endblock %}
+
+{% block nav %}
+<ul>      
+	<a class="guide-link" href="{%  url 'course:introduce' courses_detail.id %}"><div class="guide-decorate" ></div><li>课程简介</li></a>
+	<a class="guide-link" href=""><div class="guide-decorate"></div><li>评分标准</li></a>
+	<a class="guide-link" href="{%  url 'course:content' courses_detail.id %}"><div class="guide-decorate"></div><li>课件</li></a>
+	<a class="guide-link" href="{%  url 'course:assignment' courses_detail.id %}"><div class="guide-decorate"></div><li>检查与作业</li></a>
+	<a class="guide-link" href="{%  url 'course:exam' courses_detail.id %}"><div class="guide-decorate"></div><li>考试</li></a>
+</ul>
+{% endblock %}
+
+
+{% block content %}
+<style>
+    
+    .guide-link:nth-child(2) li{
+		background-color: #fff;
+        color:#2a4d97 ;
+	}
+
+	.guide-link:nth-child(2) .guide-decorate{
+        display: inline-block;
+        z-index: 3;
+        top:35px;
+        left:0;
+        position: absolute;
+        margin-right: 8px;
+        height:26px;
+        width:8px;
+        border-radius: 0 8px 8px 0;
+        background-color:#2a4c97;
+        margin-bottom: 20px;
+      } 
+      
+      .guide-link:nth-child(1) .guide-decorate {
+        display: none;
+        z-index: 3;
+        top: 15px;
+        left:0;
+        position: absolute;
+        margin-right: 8px;
+        height:26px;
+        width:8px;
+        border-radius: 0 8px 8px 0;
+        background-color:#2a4c97;
+        margin-bottom: 20px;
+      } 
+
+
+      .guide-link:nth-child(n+3) .guide-decorate {
+        display: none;
+        z-index: 3;
+        top: 35px;
+        left:0;
+        position: absolute;
+        margin-right: 8px;
+        height:26px;
+        width:8px;
+        border-radius: 0 8px 8px 0;
+        background-color:#2a4c97;
+        margin-bottom: 20px;
+      } 
+
+
+
+    .right-all {
+		float: left;
+		padding-left: 30px;
+		
+	}
+
+	.title {
+        position: relative;
+	}
+
+	.right-all h1 {
+		color :white;
+		font-weight:bold;
+		font-size : 15px;
+		display :inline-block;
+		background:#2a4d97;
+		height:35px;
+		width:150px;
+		line-height: 2em;
+		text-align: center;
+		position:relative;
+	 }
+ 
+	 .title h1:after {
+	   content:"";
+	   width: 0;
+	   height: 0;
+	   border-bottom: 35px solid #2a4d97;
+	   border-right: 35px solid transparent;
+	   position:absolute;
+	   left :150px;
+	 }
+ 
+	 .mid-blu {
+	   position:absolute;
+	   display:inline-block;
+	   width: 60px;
+	   height: 35px;
+	   transform: skew(45deg);
+	   background: red;
+	   background:#689ce0;
+	   top:0px;
+	   left:180px;
+	   z-index:1;
+	 }
+	 
+	 .title .more {
+	   display:inline-block;
+	   font-weight:bold;
+	   line-height:2em;
+	   font-size : 15px;
+	   color:#5d5d5c;
+	   position:absolute;
+	   height:35px;
+	   width:750px;
+	   top:0px;
+	   left:235px;
+	   background:#dfe8f6;
+	   border:none;
+	   z-index:0;
+	   padding-left: 90px;
+	 }
+ 
+	 .title .more:before {
+	   content:"";
+	   width: 0;
+	   height: 0;
+	   border-bottom: 50px solid #efefee;
+	   border-right: 50px solid transparent;
+	   position:absolute;
+	   top:0px;
+	   left:0px;
+	 }
+
+	 .content {
+        width: 1075px;
+		background-color: white;
+		margin-top: 30px;
+		height: 505px;
+		box-shadow: 5px 5px 7px rgba(100, 100, 100, .5);
+	 }
+
+     .tit {
+        border-bottom: solid #2a4d97 2px;   
+		height:50px
+	 }
+
+	 .tit #text{
+		float: left;
+		font-size: 19px;
+		margin-top: 15px;
+		margin-left: 110px;
+	 }
+
+	 .tit #botton{
+        float: right;
+		background-color: #689ce0;
+		font-size: 16px;
+		font-weight: bold;
+		color: #fff;
+		height: 30px;
+		width: 100px;
+        border-radius: 10px 10px 10px 10px;
+		text-align: center;
+		line-height: 28px;
+		margin-top: 10px;
+		margin-right: 100px;
+	 }
+     
+	 .content #pfbz {
+		position: relative;
+		text-align: center;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		color: #2a4d97;
+		font-weight: bold;
+		font-size: 15px;
+	 }
+	  
+	 #pfbz .front{
+		position: absolute;
+		background-color: #689ce0;
+		width: 6px;
+		height: 11px;
+		top:22px;
+		left:494px
+	 }
+
+	 #pfbz .behind{
+		position: absolute;
+		width: 6px;
+		height: 11px;
+		background-color: #689ce0;
+		top:22px;
+		left:574px
+	 }
+
+     table {
+        margin-top: 70px;
+		margin-left: 245px;
+	 }
+     
+	 thead tr th {
+		background-color: #689ce0;
+		font-size: 16px;
+		color: #fff;
+		height: 50px ;
+		width: 190px;
+	 }
+
+	 thead tr th:nth-child(1) {
+		border-left: #fff solid 2px;
+		border-right: #2a4c97 solid 2px;
+	 }
+
+	 thead tr th:nth-child(3) {
+		border-right: #fff solid 2px;
+		border-left: #2a4c97 solid 2px;
+	 }
+
+
+	 tbody tr th {
+		background-color: #ebf3fe;
+		font-size: 16px;
+		color: #8c8e90;
+		height: 65px ;
+		width: 190px;
+		border: #fff solid 2px;
+		
+	 }
+
+	 tbody tr:nth-child(1) th {
+		border-top: none;
+	 }
+
+
+</style>
+
+<div class="right-all">
+	<div class = "title">
+		<h1>{% if courses_detail.if_required %}必 修{% else %}选 修{% endif %} </h1>
+		<div class="mid-blu"></div>
+		<div class="more" href="">{{courses_detail.name}}</div>
+    </div>
+	<div class="content">
+		<div class="tit">
+			<div id="pfbz"><div class="front"></div>评分标准<div class="behind"></div></div>
+	    </div>
+		<table>
+			<thead>
+				<tr>
+					<th>评分项</th>
+					<th>评分标准</th>
+					<th>分值占比</th>
+				</tr>
+				</thead>
+			<tbody>
+				{% for item in courses_standard_detail %}
+				<tr>
+					<th>{{item.evalute_item}}</th>
+					<th>{{item.evalute_standard}}</th>
+					<th>{{item.proportion}}%</th>
+				</tr>
+				{% endfor %}
+			</tbody>
+	    </table>
+	</div>
+</div>
+
+
+
+{% endblock %}
+{% block custom_js %}
+	<script type="text/javascript" >
+		$($(".guide-link").eq(1).siblings().mouseover(function(){
+			$(this).children("div").css("display" ,"inline-block")
+		  }))
+		
+		  $($(".guide-link").eq(1).siblings().mouseout(function(){
+			$(this).children("div").css("display" ,"none")
+		}))
+	</script>
+{% endblock %}
